@@ -4,7 +4,7 @@
     <controller-ssl-enabled>false</controller-ssl-enabled>
     <application-name>app-jtimon</application-name>
     <tier-name>tier-jtimon</tier-name>
-    <node-name>node-jtimon</node-name>
+    <node-name></node-name>
     <agent-runtime-dir></agent-runtime-dir>
     <enable-orchestration>false</enable-orchestration>
     <account-name>customer1</account-name>
