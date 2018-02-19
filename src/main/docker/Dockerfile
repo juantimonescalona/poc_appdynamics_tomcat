@@ -11,7 +11,7 @@ RUN find /opt/appdynamics/ -type d -exec chmod g+x {} +
 
 RUN mkdir /usr/local/tomcat
 RUN mkdir /usr/local/tomcat/conf
-ADD application.properties /usr/local/tomcat/conf/application.properties
+#ADD application.properties /usr/local/tomcat/conf/application.properties
 
 RUN mkdir /deployments/logs
 RUN chgrp -R 0 /deployments/logs/
@@ -20,7 +20,7 @@ ENV JAVA_OPTS="-javaagent:/opt/appdynamics/javaagent.jar -Dappdynamics.agent.log
 ENV JAVA_OPTS="$JAVA_OPTS -Xbootclasspath/p:/wildfly/modules/system/layers/base/org/jboss/log4j/logmanager/main/log4j-jboss-logmanager-1.0.2.Final-redhat-1.jar -Djboss.modules.system.pkgs=org.jboss.byteman,com.appdynamics,com.appdynamics.,com.singularity,com.singularity."
 ENV spring_config_location="/usr/local/tomcat/conf/"
 
-ADD ROOT.war /deployments/ROOT.war
+ADD sample.war /deployments/sample.war
 
 
 #jboss from FIS
