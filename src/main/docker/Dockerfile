@@ -9,16 +9,10 @@ RUN chgrp -R 0 /opt/appdynamics/
 RUN chmod -R g+rw /opt/appdynamics/
 RUN find /opt/appdynamics/ -type d -exec chmod g+x {} +
 
-RUN mkdir /usr/local/tomcat
-RUN mkdir /usr/local/tomcat/conf
-#ADD application.properties /usr/local/tomcat/conf/application.properties
-
 RUN mkdir /deployments/logs
 RUN chgrp -R 0 /deployments/logs/
 RUN chmod -R g+rw /deployments/logs/
 ENV JAVA_OPTS="-javaagent:/opt/appdynamics/javaagent.jar -Dappdynamics.agent.logs.dir=/deployments/logs -Dappdynamics.agent.reuse.nodeName=true -Dappdynamics.agent.reuse.nodeName.prefix=app-prefix  $JAVA_OPTS"
-ENV JAVA_OPTS="$JAVA_OPTS -Xbootclasspath/p:/wildfly/modules/system/layers/base/org/jboss/log4j/logmanager/main/log4j-jboss-logmanager-1.0.2.Final-redhat-1.jar -Djboss.modules.system.pkgs=org.jboss.byteman,com.appdynamics,com.appdynamics.,com.singularity,com.singularity."
-ENV spring_config_location="/usr/local/tomcat/conf/"
 
 ADD sample.war /deployments/sample.war
 
